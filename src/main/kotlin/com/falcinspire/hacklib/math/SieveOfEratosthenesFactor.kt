@@ -3,7 +3,7 @@ package com.falcinspire.hacklib.math
 import java.lang.Math.sqrt
 
 object SieveOfEratosthenesFactor {
-    fun sieveOfEratosthenes(n: Int): List<Int> {
+    fun sieveOfEratosthenes(n: Int): Sequence<Int> {
         val possiblePrimes = BooleanArray(n) {true}
         val nSqrt = sqrt(n.toDouble()).toInt() //TODO integer version
         for (i in 2..nSqrt) {
@@ -17,11 +17,6 @@ object SieveOfEratosthenesFactor {
                 }
             }
         }
-        val list = ArrayList<Int>()
-        for (i in 0 until n) {
-            if (possiblePrimes[i])
-                list.add(i)
-        }
-        return list
+        return SieveSequence(possiblePrimes)
     }
 }
