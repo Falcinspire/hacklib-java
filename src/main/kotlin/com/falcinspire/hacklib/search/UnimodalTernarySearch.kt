@@ -4,14 +4,13 @@ import java.lang.Math.abs
 
 object UnimodalTernarySearch {
 
-    fun ternarySearch(low: Float, high: Float, precisionWrapper: Precision, function: (Float) -> Float, minimum: Boolean) =
+    fun ternarySearch(low: Double, high: Double, precisionWrapper: Precision, function: (Double) -> Double, minimum: Boolean) =
             ternarySearchPrecision(low, high, precisionWrapper.value, function, minimum)
 
-    private fun ternarySearchPrecision(low: Float, high: Float, precision: Float, function: (Float) -> Float, minimum: Boolean): Float {
+    private fun ternarySearchPrecision(low: Double, high: Double, precision: Double, function: (Double) -> Double, minimum: Boolean): Double {
         val a = (low * 2 + high) / 3
         val b = (low + high * 2) / 3
 
-        println("$low, $a(${function(a)}), $b(${function(b)}), $high")
         if (abs(high - low) < precision) {
             return (low + high) / 2
         }
@@ -31,10 +30,10 @@ object UnimodalTernarySearch {
         }
     }
 
-    fun ternarySearch(low: Float, high: Float, countWrapper: Count, function: (Float) -> Float, minimum: Boolean) =
+    fun ternarySearch(low: Double, high: Double, countWrapper: Count, function: (Double) -> Double, minimum: Boolean) =
         ternarySearchCount(low, high, countWrapper.value, function, minimum)
 
-    private fun ternarySearchCount(low: Float, high: Float, count: Int, function: (Float) -> Float, minimum: Boolean): Float {
+    private fun ternarySearchCount(low: Double, high: Double, count: Int, function: (Double) -> Double, minimum: Boolean): Double {
         val a = (low * 2 + high) / 3
         val b = (low + high * 2) / 3
 

@@ -1,3 +1,3 @@
 package com.falcinspire.hacklib.search
 
-class Precision(val value: Float)
+class Precision(val value: Double)
