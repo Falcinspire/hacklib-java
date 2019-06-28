@@ -1,3 +1,5 @@
+package com.falcinspire.hacklib.math
+
 fun log2floor(number: Int): Int {
     // find the first 1 bit from the MSD side to the LSD side
     for (counter in 0 until 32) {

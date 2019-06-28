@@ -1,7 +1,9 @@
 package com.falcinspire.hacklib.search
 
+import com.falcinspire.hacklib.search.ComparisonResult.*
+
 object BinarySearchFloor {
-    fun binarySearch(low: Int, high: Int, compare: (Int) -> Int): Int {
+    fun binarySearch(low: Int, high: Int, compare: (Int) -> ComparisonResult): Int {
         var lower = low
         var upper = high
 
@@ -10,16 +12,16 @@ object BinarySearchFloor {
         loop@ while (lower <= upper) {
             val mid = (lower + upper) / 2
             val result = compare(mid)
-            when {
-                isEqual(result) -> {
+            when (result) {
+                EQUAL -> {
                     answer = mid
                     break@loop
                 }
-                isLess(result) -> {
+                LESS -> {
                     answer = mid
                     lower = mid + 1
                 }
-                isGreater(result) -> {
+                GREATER -> {
                     upper = mid - 1
                 }
             }

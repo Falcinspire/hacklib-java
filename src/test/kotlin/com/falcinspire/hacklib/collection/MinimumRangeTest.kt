@@ -1,3 +1,5 @@
+package com.falcinspire.hacklib.collection
+
 import org.junit.Test
 
 class MinimumRangeTest {

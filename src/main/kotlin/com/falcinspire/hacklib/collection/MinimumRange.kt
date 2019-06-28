@@ -1,3 +1,7 @@
+package com.falcinspire.hacklib.collection
+
+import com.falcinspire.hacklib.math.log2floor
+import com.falcinspire.hacklib.math.pow2
 import kotlin.math.min
 
 class MinimumRange(private val table: Array<IntArray>) {
