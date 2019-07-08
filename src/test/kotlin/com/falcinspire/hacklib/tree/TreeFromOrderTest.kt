@@ -1,6 +1,9 @@
 package com.falcinspire.hacklib.tree
 
 import com.falcinspire.hacklib.listutil.queueOf
+import com.falcinspire.hacklib.treev2.order.InOrder
+import com.falcinspire.hacklib.treev2.order.PreOrder
+import com.falcinspire.hacklib.treev2.order.TreeFromOrder
 import org.junit.Test
 
 class TreeFromOrderTest {

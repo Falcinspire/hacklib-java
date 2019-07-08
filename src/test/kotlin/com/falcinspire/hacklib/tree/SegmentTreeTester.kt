@@ -86,12 +86,4 @@ class SegmentTreeTester {
         }
         return min
     }
-
-    @Test
-    fun showOffToChris() {
-        val array = intArrayOf(1, 2, 3, 4, 5, 6)
-        val querySum = SegmentTree.build(array, SegmentTree.SUM)
-        val queryMin = SegmentTree.build(array, SegmentTree.MIN)
-        val queryMax = SegmentTree.build(array, SegmentTree.MAX)
-    }
 }

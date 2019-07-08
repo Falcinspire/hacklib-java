@@ -1,7 +1,7 @@
-package com.falcinspire.hacklib.tree
+package com.falcinspire.hacklib.treev2.order
 
-import com.falcinspire.hacklib.treev2.order.InOrder
-import com.falcinspire.hacklib.treev2.order.PreOrder
+import com.falcinspire.hacklib.tree.BinaryNode
+import com.falcinspire.hacklib.tree.span
 
 object TreeFromOrder {
 

@@ -7,12 +7,12 @@ class FenwickTreeTest {
     fun fenwick() {
         val array = intArrayOf(3, 2, -1, 6, 5, 4, -3, 3, 7, 2, 3)
         val fenwick = FenwickTree(array.size)
-        array.forEachIndexed { i, it -> fenwick.pointUpdate(i, it) }
+        array.forEachIndexed { i, it -> fenwick.update(i, it) }
         repeat(array.size + 1) {
             print("${fenwick.array[it]} ")
         }
         println()
-        fenwick.pointUpdate(6, 3)
+        fenwick.update(6, 3)
         repeat(array.size + 1) {
             print("${fenwick.array[it]} ")
         }

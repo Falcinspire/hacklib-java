@@ -1,4 +1,8 @@
-package com.falcinspire.hacklib.tree
+package com.falcinspire.hacklib.treev2
+
+import com.falcinspire.hacklib.math.addSmallestPow2
+import com.falcinspire.hacklib.math.subtractSmallestPow2
+
 /**
  * Efficiently update elements and calculate prefix sums in a table of numbers - Wikipedia
  */
@@ -10,22 +14,22 @@ class FenwickTree(inputSize: Int) {
         var thisIndex = index + 1
         while (thisIndex < size) {
             array[thisIndex] += change
-            thisIndex = addRightmostBit(thisIndex)
+            thisIndex = addSmallestPow2(thisIndex)
         }
     }
 
-    fun getSum(end: Int): Int {
+    fun sum(end: Int): Int {
         var sum = 0
         var thisIndex = end + 1
         while (thisIndex > 0) {
             sum += array[thisIndex]
-            thisIndex = subtractRightmostBit(thisIndex)
+            thisIndex = subtractSmallestPow2(thisIndex)
         }
         return sum
     }
+}
 
-    fun range(start: Int, end: Int): Int {
-        if (start == 0) return getSum(end)
-        else return getSum(end) - getSum(start - 1)
-    }
+fun FenwickTree.range(start: Int, end: Int): Int {
+    if (start == 0) return sum(end)
+    else return sum(end) - sum(start - 1)
 }
