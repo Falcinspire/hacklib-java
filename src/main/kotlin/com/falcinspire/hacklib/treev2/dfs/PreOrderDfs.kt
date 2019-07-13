@@ -3,7 +3,7 @@ package com.falcinspire.hacklib.treev2.dfs
 import com.falcinspire.hacklib.treev2.UndirectedIndexedTree
 
 fun <T, U> UndirectedIndexedTree<T>.preOrderDfs(start: Int, listener: PreOrderDfsListener<T, U>) {
-    val result = listener.merge(start, listener.makeDefault())
+    val result = listener.merge(start, start, listener.makeDefault())
     preOrderDfsRecursive(start, start, result, listener)
 }
 
@@ -13,6 +13,7 @@ private fun <T, U> UndirectedIndexedTree<T>.preOrderDfsRecursive(node: Int, pare
 
         val result = listener.merge(
             child,
+            node,
             parentValue
         )
 

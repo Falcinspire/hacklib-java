@@ -5,6 +5,10 @@ import java.lang.Integer.max
 class DiameterDPTree(val size: Int) {
     val tree = createUndirectedIndexedTree(size) {DiameterDPNode()}
 
+    fun connect(a: Int, b: Int) {
+        tree.connect(a, b)
+    }
+
     private fun dp() = dpRecursive(0, 0)
     private fun dpRecursive(node: Int, parent: Int) {
         var firstDiameter = 0

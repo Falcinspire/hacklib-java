@@ -6,13 +6,13 @@ import com.falcinspire.hacklib.math.subtractSmallestPow2
 /**
  * Efficiently update elements and calculate prefix sums in a table of numbers - Wikipedia
  */
-class FenwickTree(inputSize: Int) {
-    val size = inputSize + 1
-    val array = IntArray(size)
+class FenwickTree(val size: Int) {
+    val backingSize = size + 1
+    val array = IntArray(backingSize)
 
     fun update(index: Int, change: Int) {
         var thisIndex = index + 1
-        while (thisIndex < size) {
+        while (thisIndex < backingSize) {
             array[thisIndex] += change
             thisIndex = addSmallestPow2(thisIndex)
         }

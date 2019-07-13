@@ -16,6 +16,8 @@ class BitSetCombinationsIterator(val size: Int, val subsetSize: Int): Iterator<B
 
     private var notFinished = true
 
+    private val OVERFLOW = true
+
     override fun hasNext() = notFinished
 
     override fun next(): BitSet {
@@ -25,45 +27,43 @@ class BitSetCombinationsIterator(val size: Int, val subsetSize: Int): Iterator<B
     }
 
     private fun nextCombination(): Boolean {
-        bumpLastLeft()
+        bumpLast()
+        if (fixCollisions() == OVERFLOW)
+            return false
+        refill()
+        return true
+    }
 
-        while(true) {
-            val top = stack.pop()
-            val second = stack.pop()
-            if (top == second) {
-                // throw out top
+    private fun bumpLast() {
+        val location = stack.pop()
+        bitSet[location] = false
 
-                // pushed outside set?
-                if (second + 1 == size) return /* Finished */ false
+        stack.push(location + 1)
+        bitSet[location + 1] = true
+    }
 
-                bitSet[top] = false
-
-                // move leftmost one left
-                stack.push(second + 1)
-                bitSet[second + 1] = true
-
-            } else {
-                stack.push(second)
-                stack.push(top)
-                break
-            }
-        }
-
+    private fun refill() {
         var stackSize = stack.size - 1 // root element
         while (stackSize < subsetSize) {
             stack.push(subsetSize - stackSize - 1)
             bitSet[subsetSize - stackSize - 1] = true
             stackSize++
         }
-
-        return /* Not finished */ true
     }
 
-    private fun bumpLastLeft() {
-        val location = stack.pop()
-        bitSet[location] = false
-
-        stack.push(location + 1)
-        bitSet[location + 1] = true
+    private fun fixCollisions(): Boolean {
+        while(true) {
+            val top = stack.pop()
+            val second = stack.peek()
+            if (top == second) {
+                // will be pushed outside set?
+                if (second + 1 == size) return OVERFLOW
+                bumpLast()
+            } else {
+                stack.push(top)
+                break
+            }
+        }
+        return false
     }
 }

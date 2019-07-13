@@ -3,6 +3,7 @@ package com.falcinspire.hacklib.tree
 import com.sun.javafx.geom.Edge
 import java.lang.Integer.max
 
+//THIS MAY BE BROKEN FOR SOME PATHS
 class LongestPathTree(val size: Int) {
     val nodes = Array(size) { LongestPathNode() }
 

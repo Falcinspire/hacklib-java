@@ -1,6 +1,6 @@
 package com.falcinspire.hacklib.tree
 
-//TODO? this size includes the unused element at 0
+//TODO? this backingSize includes the unused element at 0
 class BinaryArrayTree(val size: Int, val array: IntArray) {
 
     constructor(size: Int, defaultValue: Int = 0): this(size, IntArray(size){defaultValue})
