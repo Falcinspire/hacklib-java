@@ -1,3 +1,6 @@
 package com.falcinspire.hacklib.treev2
 
-class SegmentTreeReducer(val defaultValue: Int, val reduce: (Int, Int) -> Int)
+interface SegmentTreeReducer<T> {
+    fun makeDefault(): T
+    fun reduce(a: T, b: T): T
+}

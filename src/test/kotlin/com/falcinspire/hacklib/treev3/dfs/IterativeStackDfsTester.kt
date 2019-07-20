@@ -1,6 +1,7 @@
 package com.falcinspire.hacklib.treev3.dfs
 
 import com.falcinspire.hacklib.treev2.createUndirectedIndexedTree
+import com.falcinspire.hacklib.treev2.dfs.IterativeStackDfs
 import org.junit.Test
 
 class IterativeStackDfsTester {

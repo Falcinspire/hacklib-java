@@ -7,7 +7,7 @@ import com.falcinspire.hacklib.treev2.dfs.preOrderDfs
 
 class AncesTree(val size: Int) {
     private val depth = log2floor(size)
-    private val tree = createUndirectedIndexedTree(size) {AncesNode(depth)}
+    private val tree = createUndirectedIndexedTree(size) {AncesNode(depth + 1)}
 
     fun dp() {
         // base case
@@ -25,11 +25,8 @@ class AncesTree(val size: Int) {
                 override fun makeDefault() {}
                 override fun merge(node: Int, parent: Int, result: Unit) {
                     val halfway = getAncestor(node, k - 1)
-                    if (halfway != -1) {
-                        setAncestor(node, k, -1)
-                    } else {
+                    if (halfway != -1)
                         setAncestor(node, k, getAncestor(halfway, k - 1))
-                    }
                 }
             })
         }
